@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/star_wars_galaxy_explorer_app/' : '/',
+  base: '/star_wars_galaxy_explorer_app/',
   plugins: [react()],
   server: {
     port: 5173,

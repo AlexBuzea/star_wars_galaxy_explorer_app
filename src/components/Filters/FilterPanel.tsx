@@ -148,8 +148,8 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
               gap: '4px',
               transition: 'color 0.2s ease'
             }}
-            onMouseEnter={(e) => e.target.style.color = 'var(--sw-yellow)'}
-            onMouseLeave={(e) => e.target.style.color = 'var(--sw-space-400)'}
+            onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-yellow)')}
+            onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-space-400)')}
           >
             <X size={14} />
             <span>Clear</span>
@@ -257,8 +257,8 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
                       background: 'none',
                       transition: 'color 0.2s ease'
                     }}
-                    onMouseEnter={(e) => e.target.style.color = 'var(--sw-space-300)'}
-                    onMouseLeave={(e) => e.target.style.color = 'var(--sw-space-400)'}
+                    onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-space-300)')}
+                    onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-space-400)')}
                   >
                     <X size={14} />
                   </button>

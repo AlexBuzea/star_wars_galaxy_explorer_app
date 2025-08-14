@@ -75,8 +75,8 @@ const RelatedResourcesList = ({
                 fontFamily: "'Rajdhani', sans-serif",
                 transition: 'color 0.2s ease'
               }}
-              onMouseEnter={(e) => e.target.style.color = '#e6b800'}
-              onMouseLeave={(e) => e.target.style.color = 'var(--sw-yellow)'}
+              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#e6b800')}
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-yellow)')}
             >
               View {urls.length - maxDisplay} more {title.toLowerCase()}
             </Link>
@@ -166,18 +166,20 @@ const RelatedResourceItem = ({
         color: 'inherit'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = 'rgba(51, 51, 51, 0.5)';
-        e.currentTarget.style.borderColor = 'rgba(255, 232, 31, 0.3)';
-        const title = e.currentTarget.querySelector('.resource-title');
-        const icon = e.currentTarget.querySelector('.resource-icon');
+        const card = e.currentTarget as HTMLElement;
+        card.style.backgroundColor = 'rgba(51, 51, 51, 0.5)';
+        card.style.borderColor = 'rgba(255, 232, 31, 0.3)';
+        const title = card.querySelector('.resource-title') as HTMLElement | null;
+        const icon = card.querySelector('.resource-icon') as HTMLElement | null;
         if (title) title.style.color = 'var(--sw-yellow)';
         if (icon) icon.style.color = 'var(--sw-yellow)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = 'rgba(36, 36, 36, 0.5)';
-        e.currentTarget.style.borderColor = 'var(--sw-space-600)';
-        const title = e.currentTarget.querySelector('.resource-title');
-        const icon = e.currentTarget.querySelector('.resource-icon');
+        const card = e.currentTarget as HTMLElement;
+        card.style.backgroundColor = 'rgba(36, 36, 36, 0.5)';
+        card.style.borderColor = 'var(--sw-space-600)';
+        const title = card.querySelector('.resource-title') as HTMLElement | null;
+        const icon = card.querySelector('.resource-icon') as HTMLElement | null;
         if (title) title.style.color = 'var(--sw-space-100)';
         if (icon) icon.style.color = 'var(--sw-space-400)';
       }}

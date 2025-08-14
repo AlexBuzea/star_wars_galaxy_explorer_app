@@ -63,8 +63,8 @@ const SearchResults = ({ title, data, resourceType, onClose }: SearchResultsProp
                 gap: '4px',
                 transition: 'color 0.2s ease'
               }}
-              onMouseEnter={(e) => e.target.style.color = '#e6b800'}
-              onMouseLeave={(e) => e.target.style.color = 'var(--sw-yellow)'}
+              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#e6b800')}
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-yellow)')}
             >
               <span>View all</span>
               <ChevronRight size={14} />
@@ -95,16 +95,16 @@ const SearchResults = ({ title, data, resourceType, onClose }: SearchResultsProp
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'rgba(36, 36, 36, 0.5)';
                 e.currentTarget.style.borderColor = 'rgba(255, 232, 31, 0.3)';
-                const title = e.currentTarget.querySelector('.result-title');
-                const arrow = e.currentTarget.querySelector('.result-arrow');
+                const title = e.currentTarget.querySelector('.result-title') as HTMLElement | null;
+                const arrow = e.currentTarget.querySelector('.result-arrow') as HTMLElement | null;
                 if (title) title.style.color = 'var(--sw-yellow)';
                 if (arrow) arrow.style.color = 'var(--sw-yellow)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.5)';
                 e.currentTarget.style.borderColor = 'var(--sw-space-600)';
-                const title = e.currentTarget.querySelector('.result-title');
-                const arrow = e.currentTarget.querySelector('.result-arrow');
+                const title = e.currentTarget.querySelector('.result-title') as HTMLElement | null;
+                const arrow = e.currentTarget.querySelector('.result-arrow') as HTMLElement | null;
                 if (title) title.style.color = 'var(--sw-space-100)';
                 if (arrow) arrow.style.color = 'var(--sw-space-400)';
               }}
@@ -185,8 +185,8 @@ const SearchResults = ({ title, data, resourceType, onClose }: SearchResultsProp
             gap: '8px',
             transition: 'color 0.2s ease'
           }}
-          onMouseEnter={(e) => e.target.style.color = '#e6b800'}
-          onMouseLeave={(e) => e.target.style.color = 'var(--sw-yellow)'}
+          onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#e6b800')}
+          onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-yellow)')}
         >
           <span>Show {results.length - 5} more {title.toLowerCase()}</span>
           <ChevronRight size={14} />

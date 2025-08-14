@@ -124,9 +124,9 @@ const ResourceCard = ({ resource, resourceType }: ResourceCardProps) => {
         card.style.borderColor = 'rgba(255, 232, 31, 0.5)';
         
         // Icon and title color changes
-        const icon = card.querySelector('.resource-icon');
-        const title = card.querySelector('.resource-title');
-        const linkIcon = card.querySelector('.link-icon');
+        const icon = card.querySelector('.resource-icon') as HTMLElement | null;
+        const title = card.querySelector('.resource-title') as HTMLElement | null;
+        const linkIcon = card.querySelector('.link-icon') as HTMLElement | null;
         if (icon) icon.style.color = 'var(--sw-yellow)';
         if (title) title.style.color = 'var(--sw-yellow)';
         if (linkIcon) linkIcon.style.color = 'var(--sw-yellow)';
@@ -137,9 +137,9 @@ const ResourceCard = ({ resource, resourceType }: ResourceCardProps) => {
         card.style.borderColor = 'var(--sw-space-600)';
         
         // Reset colors
-        const icon = card.querySelector('.resource-icon');
-        const title = card.querySelector('.resource-title');
-        const linkIcon = card.querySelector('.link-icon');
+        const icon = card.querySelector('.resource-icon') as HTMLElement | null;
+        const title = card.querySelector('.resource-title') as HTMLElement | null;
+        const linkIcon = card.querySelector('.link-icon') as HTMLElement | null;
         if (icon) icon.style.color = 'var(--sw-yellow)';
         if (title) title.style.color = 'var(--sw-space-100)';
         if (linkIcon) linkIcon.style.color = 'var(--sw-space-400)';

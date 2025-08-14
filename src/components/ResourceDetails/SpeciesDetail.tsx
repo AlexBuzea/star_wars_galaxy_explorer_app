@@ -41,45 +41,47 @@ const SpeciesDetail = ({ id }: SpeciesDetailProps) => {
     );
   }
 
+  const speciesObj = species?.pages?.[0]?.results?.[0];
+
   const speciesInfo = [
-    { icon: Zap, label: 'Classification', value: species.classification },
-    { icon: Users, label: 'Designation', value: species.designation },
-    { icon: Calendar, label: 'Average Lifespan', value: `${species.average_lifespan} years` },
-    { icon: Globe, label: 'Language', value: species.language },
-    { icon: Eye, label: 'Eye Colors', value: species.eye_colors },
-    { icon: Palette, label: 'Hair Colors', value: species.hair_colors },
-    { icon: Palette, label: 'Skin Colors', value: species.skin_colors },
+    { icon: Zap, label: 'Classification', value: speciesObj.classification },
+    { icon: Users, label: 'Designation', value: speciesObj.designation },
+    { icon: Calendar, label: 'Average Lifespan', value: `${speciesObj.average_lifespan} years` },
+    { icon: Globe, label: 'Language', value: speciesObj.language },
+    { icon: Eye, label: 'Eye Colors', value: speciesObj.eye_colors },
+    { icon: Palette, label: 'Hair Colors', value: speciesObj.hair_colors },
+    { icon: Palette, label: 'Skin Colors', value: speciesObj.skin_colors },
   ];
 
   return (
     <DetailContainer>
       {/* Species Header */}
       <DetailHeader
-        title={species.name}
+        title={speciesObj.name}
         icon={Zap}
         infoItems={speciesInfo}
       />
 
       <div className="row g-4">
         {/* People */}
-        {species.people.length > 0 && (
+        {speciesObj.people.length > 0 && (
           <div className="col-12 col-lg-6">
             <RelatedResourcesList
               title="Notable People"
               icon={User}
-              urls={species.people}
+              urls={speciesObj.people}
               resourceType="people"
             />
           </div>
         )}
 
         {/* Films */}
-        {species.films.length > 0 && (
+        {speciesObj.films.length > 0 && (
           <div className="col-12 col-lg-6">
             <RelatedResourcesList
               title="Featured in Films"
               icon={Film}
-              urls={species.films}
+              urls={speciesObj.films}
               resourceType="films"
             />
           </div>
@@ -92,22 +94,22 @@ const SpeciesDetail = ({ id }: SpeciesDetailProps) => {
           <DetailSpecCard
             icon={Users}
             title="Average Height"
-            value={species.average_height === 'unknown' ? 'Unknown' : `${species.average_height} cm`}
+            value={speciesObj.average_height === 'unknown' ? 'Unknown' : `${speciesObj.average_height} cm`}
           />
           <DetailSpecCard
             icon={Calendar}
             title="Lifespan"
-            value={`${species.average_lifespan} years`}
+            value={`${speciesObj.average_lifespan} years`}
           />
           <DetailSpecCard
             icon={Zap}
             title="Classification"
-            value={species.classification}
+            value={speciesObj.classification}
           />
           <DetailSpecCard
             icon={Globe}
             title="Language"
-            value={species.language}
+            value={speciesObj.language}
           />
         </div>
       </DetailCard>

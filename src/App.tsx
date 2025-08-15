@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import { store } from './store';
@@ -22,7 +22,7 @@ function App() {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        <Router>
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
@@ -42,7 +42,7 @@ function App() {
               <Route path="*" element={<Navigate to="/404" replace />} />
             </Route>
           </Routes>
-        </BrowserRouter>
+        </Router>
       </QueryClientProvider>
     </Provider>
   );

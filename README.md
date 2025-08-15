@@ -1,5 +1,7 @@
 # ⭐ Star Wars Galaxy Explorer
 
+## 🚀 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20Here%20%E2%86%92-yellow?style=for-the-badge&logo=starship)](https://alexbuzea.github.io/star_wars_galaxy_explorer_app/)
+
 A responsive and interactive React application that allows users to explore the Star Wars universe using the [SWAPI (Star Wars API)](https://swapi.dev/). Navigate through characters, planets, species, starships, vehicles, and films from a galaxy far, far away.
 
 ![Star Wars Explorer](https://img.shields.io/badge/May%20the%20Force-be%20with%20you-yellow?style=for-the-badge)

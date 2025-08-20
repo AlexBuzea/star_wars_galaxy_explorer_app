@@ -112,10 +112,11 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
 
   return (
     <div 
-      className="card card-star-wars p-4"
+      className="card card-star-wars p-4 shadow-sm"
       style={{
         backgroundColor: 'rgba(26, 26, 26, 0.5)',
-        backdropFilter: 'blur(4px)'
+        backdropFilter: 'blur(4px)',
+        border: '1px solid var(--sw-space-600)'
       }}
     >
       {/* Header */}
@@ -125,12 +126,11 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
             size={20} 
             style={{ color: 'var(--sw-yellow)', marginRight: '8px' }}
           />
-          <h3 style={{
+          <h3 className="h5 mb-0" style={{
             fontFamily: "'Rajdhani', sans-serif",
             fontSize: '1.125rem',
             fontWeight: '600',
-            color: 'var(--sw-space-200)',
-            margin: 0
+            color: 'var(--sw-space-200)'
           }}>
             Filters
           </h3>
@@ -139,17 +139,23 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
         {hasActiveFilters && (
           <button
             onClick={clearFilters}
-            className="btn btn-sm d-flex align-items-center"
+            className="btn btn-sm btn-outline-secondary d-flex align-items-center"
             style={{
               color: 'var(--sw-space-400)',
-              border: 'none',
-              background: 'none',
+              borderColor: 'var(--sw-space-600)',
+              background: 'transparent',
               fontSize: '0.875rem',
               gap: '4px',
-              transition: 'color 0.2s ease'
+              transition: 'all 0.2s ease'
             }}
-            onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-yellow)')}
-            onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-space-400)')}
+            onMouseEnter={(e) => {
+              (e.target as HTMLElement).style.color = 'var(--sw-yellow)';
+              (e.target as HTMLElement).style.borderColor = 'var(--sw-yellow)';
+            }}
+            onMouseLeave={(e) => {
+              (e.target as HTMLElement).style.color = 'var(--sw-space-400)';
+              (e.target as HTMLElement).style.borderColor = 'var(--sw-space-600)';
+            }}
           >
             <X size={14} />
             <span>Clear</span>
@@ -158,17 +164,16 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
       </div>
 
       {/* Filter Options */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <div className="d-flex flex-column gap-4">
         {currentFilterOptions.map((filter) => (
           <div key={filter.key}>
             <label 
-              className="form-label"
+              className="form-label fw-medium"
               style={{
                 fontSize: '0.875rem',
                 fontFamily: "'Rajdhani', sans-serif",
-                fontWeight: '500',
                 color: 'var(--sw-space-300)',
-                marginBottom: '12px'
+                marginBottom: '0.75rem'
               }}
             >
               {filter.label}
@@ -178,16 +183,14 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
               value={activeFilters[filter.key] || ''}
               onChange={(e) => handleFilterChange(filter.key, e.target.value)}
               className="form-select"
-              style={{
-                backgroundColor: 'var(--sw-space-700)',
-                border: '1px solid var(--sw-space-600)',
-                color: 'var(--sw-space-200)',
-                borderRadius: '8px',
-                fontSize: '0.875rem',
-                transition: 'border-color 0.2s ease'
+              onFocus={(e) => {
+                e.target.style.borderColor = 'var(--sw-yellow)';
+                e.target.style.boxShadow = '0 0 0 0.2rem rgba(255, 232, 31, 0.25)';
               }}
-              onFocus={(e) => e.target.style.borderColor = 'var(--sw-yellow)'}
-              onBlur={(e) => e.target.style.borderColor = 'var(--sw-space-600)'}
+              onBlur={(e) => {
+                e.target.style.borderColor = 'var(--sw-space-600)';
+                e.target.style.boxShadow = 'none';
+              }}
             >
               <option value="">All {filter.label.toLowerCase()}</option>
               {filter.options.map((option) => (
@@ -205,41 +208,39 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
       {/* Active Filters Display */}
       {hasActiveFilters && (
         <div 
-          className="mt-4 pt-4"
-          style={{ borderTop: '1px solid var(--sw-space-700)' }}
+          className="mt-4 pt-4 border-top"
+          style={{ borderTopColor: 'var(--sw-space-700) !important' }}
         >
-          <h4 style={{
+          <h4 className="h6 fw-medium" style={{
             fontSize: '0.875rem',
             fontFamily: "'Rajdhani', sans-serif",
-            fontWeight: '500',
             color: 'var(--sw-space-300)',
-            marginBottom: '12px'
+            marginBottom: '0.75rem'
           }}>
             Active Filters
           </h4>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div className="d-flex flex-column gap-2">
             {Object.entries(activeFilters).map(([key, value]) => {
               const filterOption = currentFilterOptions.find(f => f.key === key);
               
               return (
                 <div 
                   key={key}
-                  className="d-flex align-items-center justify-content-between p-2"
+                  className="d-flex align-items-center justify-content-between p-2 rounded"
                   style={{
                     backgroundColor: 'rgba(36, 36, 36, 0.5)',
                     borderRadius: '8px'
                   }}
                 >
-                  <div style={{ fontSize: '0.875rem' }}>
+                  <div className="small">
                     <span style={{ color: 'var(--sw-space-400)' }}>
                       {filterOption?.label}:
                     </span>
                     <span 
-                      className="ms-2"
+                      className="ms-2 fw-medium"
                       style={{
-                        color: 'var(--sw-space-200)',
-                        fontWeight: '500'
+                        color: 'var(--sw-space-200)'
                       }}
                     >
                       {value === 'unknown' ? 'Unknown' : 
@@ -250,12 +251,13 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
                   
                   <button
                     onClick={() => handleFilterChange(key, '')}
-                    className="btn btn-sm p-1"
+                    className="btn btn-sm btn-link p-1"
                     style={{
                       color: 'var(--sw-space-400)',
                       border: 'none',
                       background: 'none',
-                      transition: 'color 0.2s ease'
+                      transition: 'color 0.2s ease',
+                      textDecoration: 'none'
                     }}
                     onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-space-300)')}
                     onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'var(--sw-space-400)')}
@@ -271,14 +273,13 @@ const FilterPanel = ({ resourceType }: FilterPanelProps) => {
 
       {/* Help Text */}
       <div 
-        className="mt-4 pt-4"
-        style={{ borderTop: '1px solid var(--sw-space-700)' }}
+        className="mt-4 pt-4 border-top"
+        style={{ borderTopColor: 'var(--sw-space-700) !important' }}
       >
-        <p style={{
+        <p className="small text-muted mb-0" style={{
           fontSize: '0.75rem',
           color: 'var(--sw-space-500)',
-          fontFamily: "'Rajdhani', sans-serif",
-          margin: 0
+          fontFamily: "'Rajdhani', sans-serif"
         }}>
           Use filters to narrow down your search results and find exactly what you're looking for in the galaxy.
         </p>

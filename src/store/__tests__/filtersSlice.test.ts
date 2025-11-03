@@ -4,7 +4,6 @@ import filtersReducer, {
   setActiveResourceType,
   setResourceFilter,
   clearResourceFilters,
-  clearAllFilters,
 } from '../slices/filtersSlice';
 
 describe('filtersSlice', () => {
@@ -75,21 +74,5 @@ describe('filtersSlice', () => {
     
     expect(actual.activeFilters.people).toBeUndefined();
     expect(actual.activeFilters.planets).toEqual({ climate: 'arid' });
-  });
-
-  it('should handle clearAllFilters', () => {
-    const stateWithFilters = {
-      ...initialState,
-      activeFilters: {
-        people: { gender: 'male' },
-        planets: { climate: 'arid' },
-      },
-      searchQuery: 'Luke',
-    };
-    
-    const actual = filtersReducer(stateWithFilters, clearAllFilters());
-    
-    expect(actual.activeFilters).toEqual({});
-    expect(actual.searchQuery).toEqual('');
   });
 });

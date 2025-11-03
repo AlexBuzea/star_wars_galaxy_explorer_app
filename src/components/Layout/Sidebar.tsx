@@ -8,7 +8,7 @@ import {
   Home
 } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
-import { useAppSelector } from '../../store';
+import { useState } from 'react';
 import type { ResourceType } from '../../types/swapi';
 import { resourceTypeLabels } from '../../types/swapi';
 
@@ -23,7 +23,7 @@ const navigationItems = [
 ];
 
 const Sidebar = () => {
-  const sidebarOpen = useAppSelector((state) => state.ui.sidebarOpen);
+  const [sidebarOpen] = useState(true);
 
   return (
     <aside

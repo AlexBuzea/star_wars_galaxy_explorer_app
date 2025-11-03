@@ -4,11 +4,12 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/star_wars_galaxy_explorer_app/',
+  base: process.env.NODE_ENV === 'production' ? '/star_wars_galaxy_explorer_app/' : '/',
   plugins: [react()],
   server: {
     port: 5173,
     open: false,
+    host: true, // Allow access from network
     // Proxy disabled - using direct API calls with fallbacks
   },
   test: {

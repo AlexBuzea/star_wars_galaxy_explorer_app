@@ -193,11 +193,21 @@ select.form-select::-ms-expand {
   color: #F8FAFC !important;
 }
 
+.form-control-star-wars::placeholder {
+  color: #94A3B8 !important;
+  opacity: 1 !important;
+}
+
 .form-control-star-wars:focus {
   background-color: rgba(51, 65, 85, 0.9) !important;
   border-color: var(--sw-yellow) !important;
   box-shadow: 0 0 0 0.2rem rgba(255, 232, 31, 0.25) !important;
   color: #F8FAFC !important;
+}
+
+.form-control-star-wars:focus::placeholder {
+  color: #94A3B8 !important;
+  opacity: 0.7 !important;
 }
 
 /* Loading animation */

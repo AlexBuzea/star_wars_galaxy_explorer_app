@@ -2,12 +2,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import filtersReducer from './slices/filtersSlice';
-import uiReducer from './slices/uiSlice';
 
 export const store = configureStore({
   reducer: {
     filters: filtersReducer,
-    ui: uiReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

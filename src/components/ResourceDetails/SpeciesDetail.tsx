@@ -8,7 +8,7 @@ import {
   Film,
   User
 } from 'lucide-react';
-import { useSpecies } from '../../hooks/useSwapi';
+import { useSpeciesDetail } from '../../hooks/useSwapi';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import ErrorMessage from '../UI/ErrorMessage';
 import RelatedResourcesList from './RelatedResourcesList';
@@ -22,7 +22,7 @@ interface SpeciesDetailProps {
 }
 
 const SpeciesDetail = ({ id }: SpeciesDetailProps) => {
-  const { data: species, isLoading, isError, error, refetch } = useSpecies(id);
+  const { data: species, isLoading, isError, error, refetch } = useSpeciesDetail(id);
 
   if (isLoading) {
     return (
@@ -41,7 +41,7 @@ const SpeciesDetail = ({ id }: SpeciesDetailProps) => {
     );
   }
 
-  const speciesObj = species?.pages?.[0]?.results?.[0];
+  const speciesObj = species;
 
   const speciesInfo = [
     { icon: Zap, label: 'Classification', value: speciesObj.classification },

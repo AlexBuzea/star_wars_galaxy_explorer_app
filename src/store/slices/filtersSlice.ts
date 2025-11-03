@@ -54,10 +54,6 @@ const filtersSlice = createSlice({
     clearResourceFilters: (state, action: PayloadAction<ResourceType>) => {
       delete state.activeFilters[action.payload];
     },
-    clearAllFilters: (state) => {
-      state.activeFilters = {};
-      state.searchQuery = '';
-    },
   },
 });
 
@@ -66,7 +62,6 @@ export const {
   setActiveResourceType,
   setResourceFilter,
   clearResourceFilters,
-  clearAllFilters,
 } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

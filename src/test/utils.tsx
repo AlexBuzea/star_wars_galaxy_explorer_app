@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import filtersReducer from '../store/slices/filtersSlice';
-import uiReducer from '../store/slices/uiSlice';
 
 // Create a custom render function that includes providers
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
@@ -20,7 +19,6 @@ const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   const store = configureStore({
     reducer: {
       filters: filtersReducer,
-      ui: uiReducer,
     },
   });
 
